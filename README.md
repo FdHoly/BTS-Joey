@@ -3,6 +3,8 @@ use route /token to get CSRF token and include into headers parameter with key "
 
 OR modify \app\Http\Middleware\VerifyCsrfToken.php and remove block comment
 
+Run "php artisan migrate:fresh --seed" to migrate database
+
 > Route List
 
 -   /login (POST)
