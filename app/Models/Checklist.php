@@ -10,4 +10,7 @@ class Checklist extends Model
     use HasFactory;
     protected $table = 'checklist';
     protected $primaryKey = 'id';
+    protected $fillable = [
+        'name'
+    ];
 }

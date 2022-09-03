@@ -10,4 +10,9 @@ class Item extends Model
     use HasFactory;
     protected $table = 'item';
     protected $primaryKey = 'id';
+    protected $fillable = [
+        'status',
+        'itemName',
+        'id_checklist',
+    ];
 }

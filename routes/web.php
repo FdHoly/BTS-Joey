@@ -24,7 +24,7 @@ Route::delete('/checklist/{id}', [mainController::class, "deleteCL"]);
 Route::get('/checklist/{id}/item', [mainController::class, "getItem"]);
 Route::post('/checklist/{id}/item', [mainController::class, "createItem"]);
 Route::get('/checklist/{Cid}/item/{Iid}', [mainController::class, "getItemId"]);
-Route::put('/checklist/{Cid}/item/{Iid}', [mainController::class, "updateItem"]);
+Route::put('/checklist/{checklistId}/item/{itemId}', [mainController::class, "updateItem"]);
 Route::delete('/checklist/{Cid}/item/{Iid}', [mainController::class, "deleteItem"]);
 Route::put('/checklist/{Cid}/item/rename/{Iid}', [mainController::class, "renameItem"]);
 

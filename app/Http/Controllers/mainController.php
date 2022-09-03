@@ -22,7 +22,7 @@ class mainController extends Controller
                 'name' => 'required|string'
             ]);
             Checklist::create([
-                'nama' => $request->nama,
+                'name' => $request->name,
             ]);
             return response('Created', 200);
         } catch (\Throwable $th) {
@@ -51,16 +51,17 @@ class mainController extends Controller
     public function createItem(Request $request, $id)
     {
         try {
-            $request->validate([
-                'itemName' => 'required|string'
+            $validator = $request->validate([
+                'itemName' => 'required',
             ]);
             Item::create([
                 'itemName' => $request->itemName,
                 'id_checklist' => $id,
             ]);
+
             return response('Created', 200);
         } catch (\Throwable $th) {
-            return response('Failed', 500);
+            return response('Failed to create', 500);
         }
     }
     public function getItemID($checklistId, $itemId)
@@ -76,7 +77,7 @@ class mainController extends Controller
     public function updateItem($checklistId, $itemId)
     {
         try {
-            $data = Item::find($itemId)->where('id_checklist', $checklistId)->first();
+            $data = Item::where('id', $itemId)->where('id_checklist', $checklistId)->first();
             if ($data->status == 1) {
                 $data->update([
                     'status' => '0',
@@ -108,7 +109,7 @@ class mainController extends Controller
             $request->validate([
                 'itemName' => 'required|string'
             ]);
-            $data = Item::where('id_checklist', $checklistId)->where('id', $itemId)->first();
+            $data = Item::where('id', $itemId)->where('id_checklist', $checklistId)->first();
             $data->update([
                 'itemName' => $request->itemName,
             ]);
