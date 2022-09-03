@@ -28,6 +28,9 @@ Route::put('/checklist/{Cid}/item/{Iid}', [mainController::class, "updateItem"])
 Route::delete('/checklist/{Cid}/item/{Iid}', [mainController::class, "deleteItem"]);
 Route::put('/checklist/{Cid}/item/rename/{Iid}', [mainController::class, "renameItem"]);
 
+Route::get('/token', function () {
+    return csrf_token();
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
